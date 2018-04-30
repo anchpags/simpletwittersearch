@@ -1,2 +1,34 @@
-<title> SIMPLE TWITTER SEARCH </title>
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+     <title> SIMPLE TWITTER SEARCH </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    
+  </head>
+ 
+  
+  <body>
+    
+  </body>
 <h1> SIMPLE TWITTER SEARCH </h1>
+  
+  <div id="#tweetList"></div>
+  
+   <script src="tweets_json.php?count=30&callback=listTweets" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var refreshID = setInterval (function(){
+        $.getJSON("tweets_json.php?count=30&callback=?", function(data){
+          listTweets(data);
+          $("#tweetList").trigger("create");
+        });
+      }, 5000);
+    });
+    </script>
+  
+</html>
+
